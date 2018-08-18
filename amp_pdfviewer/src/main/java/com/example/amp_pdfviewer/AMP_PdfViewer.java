@@ -2,6 +2,7 @@ package com.example.amp_pdfviewer;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.View;
 
 import com.github.barteksc.pdfviewer.PDFView;
 
@@ -13,9 +14,9 @@ public class AMP_PdfViewer {
 
     private PDFView pdfView;
 
-    public AMP_PdfViewer(Context context){
+    public AMP_PdfViewer(Context context, PDFView v){
 
-        pdfView = new PDFView(context, getAttributeSet());
+        pdfView = v;
     }
 
     public void loadPdf(byte[] bytes){
@@ -52,126 +53,4 @@ public class AMP_PdfViewer {
         //        .nightMode(false) // toggle night mode
                 .load();
     }
-
-
-
-    private AttributeSet getAttributeSet(){
-
-        final int count = 0;
-        final Map<String, String> attrs = new HashMap<>();
-
-        return new AttributeSet() {
-            @Override
-            public int getAttributeCount() {
-                return count;
-            }
-
-            @Override
-            public String getAttributeName(int index) {
-                return attrs.get();
-            }
-
-            @Override
-            public String getAttributeValue(int index) {
-                return null;
-            }
-
-            @Override
-            public String getAttributeValue(String namespace, String name) {
-                return null;
-            }
-
-            @Override
-            public String getPositionDescription() {
-                return null;
-            }
-
-            @Override
-            public int getAttributeNameResource(int index) {
-                return 0;
-            }
-
-            @Override
-            public int getAttributeListValue(String namespace, String attribute, String[] options, int defaultValue) {
-                return 0;
-            }
-
-            @Override
-            public boolean getAttributeBooleanValue(String namespace, String attribute, boolean defaultValue) {
-                return false;
-            }
-
-            @Override
-            public int getAttributeResourceValue(String namespace, String attribute, int defaultValue) {
-                return 0;
-            }
-
-            @Override
-            public int getAttributeIntValue(String namespace, String attribute, int defaultValue) {
-                return 0;
-            }
-
-            @Override
-            public int getAttributeUnsignedIntValue(String namespace, String attribute, int defaultValue) {
-                return 0;
-            }
-
-            @Override
-            public float getAttributeFloatValue(String namespace, String attribute, float defaultValue) {
-                return 0;
-            }
-
-            @Override
-            public int getAttributeListValue(int index, String[] options, int defaultValue) {
-                return 0;
-            }
-
-            @Override
-            public boolean getAttributeBooleanValue(int index, boolean defaultValue) {
-                return false;
-            }
-
-            @Override
-            public int getAttributeResourceValue(int index, int defaultValue) {
-                return 0;
-            }
-
-            @Override
-            public int getAttributeIntValue(int index, int defaultValue) {
-                return 0;
-            }
-
-            @Override
-            public int getAttributeUnsignedIntValue(int index, int defaultValue) {
-                return 0;
-            }
-
-            @Override
-            public float getAttributeFloatValue(int index, float defaultValue) {
-                return 0;
-            }
-
-            @Override
-            public String getIdAttribute() {
-                return null;
-            }
-
-            @Override
-            public String getClassAttribute() {
-                return null;
-            }
-
-            @Override
-            public int getIdAttributeResourceValue(int defaultValue) {
-                return 0;
-            }
-
-            @Override
-            public int getStyleAttribute() {
-                return 0;
-            }
-        };
-    }
-
-
 }

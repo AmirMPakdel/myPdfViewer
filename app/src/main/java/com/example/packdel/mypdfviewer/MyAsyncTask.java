@@ -2,8 +2,10 @@ package com.example.packdel.mypdfviewer;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.view.View;
 
 import com.example.amp_pdfviewer.AMP_PdfViewer;
+import com.github.barteksc.pdfviewer.PDFView;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -15,10 +17,13 @@ public class MyAsyncTask extends AsyncTask {
 
     private InputStream inputStream;
 
-    public MyAsyncTask(Context context, InputStream inputStream){
+    PDFView v;
+
+    public MyAsyncTask(Context context, InputStream inputStream, PDFView view){
 
         this.context = context;
         this.inputStream = inputStream;
+        v=view;
     }
 
     @Override
@@ -44,7 +49,7 @@ public class MyAsyncTask extends AsyncTask {
             log.print("buffer is ready!");
 
 
-            AMP_PdfViewer pdfViewer = new AMP_PdfViewer(context);
+            AMP_PdfViewer pdfViewer = new AMP_PdfViewer(context, v);
 
             pdfViewer.loadPdf(buffer);
 

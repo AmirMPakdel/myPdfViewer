@@ -9,6 +9,8 @@ import android.util.AttributeSet;
 import android.util.Xml;
 import android.view.View;
 
+import com.github.barteksc.pdfviewer.PDFView;
+
 import org.xmlpull.v1.XmlPullParser;
 
 import java.io.ByteArrayOutputStream;
@@ -32,9 +34,10 @@ public class MainActivity extends AppCompatActivity {
 
             InputStream inputStream = getAssets().open("manipulator.pdf");
 
-            MyAsyncTask myAsyncTask = new MyAsyncTask(getApplicationContext(), inputStream);
+            MyAsyncTask myAsyncTask = new MyAsyncTask(getApplicationContext(), inputStream, (PDFView) findViewById(R.id.pdfView));
 
             myAsyncTask.doInBackground(null);
+
 
         } catch (IOException e) {
             e.printStackTrace();
