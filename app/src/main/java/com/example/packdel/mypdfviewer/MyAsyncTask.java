@@ -1,8 +1,11 @@
 package com.example.packdel.mypdfviewer;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
-import android.view.View;
+import android.support.constraint.ConstraintLayout;
+import android.widget.EditText;
+import android.widget.SeekBar;
 
 import com.example.amp_pdfviewer.AMP_PdfViewer;
 import com.github.barteksc.pdfviewer.PDFView;
@@ -17,13 +20,13 @@ public class MyAsyncTask extends AsyncTask {
 
     private InputStream inputStream;
 
-    PDFView v;
+    ConstraintLayout layout;
 
-    public MyAsyncTask(Context context, InputStream inputStream, PDFView view){
+    public MyAsyncTask(Context context, InputStream inputStream, ConstraintLayout layout){
 
         this.context = context;
         this.inputStream = inputStream;
-        v=view;
+        this.layout = layout;
     }
 
     @Override
@@ -49,12 +52,14 @@ public class MyAsyncTask extends AsyncTask {
             log.print("buffer is ready!");
 
 
-            AMP_PdfViewer pdfViewer = new AMP_PdfViewer(context, v);
+            AMP_PdfViewer pdfViewer = new AMP_PdfViewer(context, (PDFView) layout.findViewById(R.id.pdfView));
 
             pdfViewer.loadPdf(buffer);
 
             log.print("finished!");
 
+            pdfViewer.setZoomController((SeekBar) layout.findViewById(R.id.zoomBar));
+            pdfViewer.setPageController((EditText) layout.findViewById(R.id.pageNumber));
 
 
         } catch (IOException e) {
